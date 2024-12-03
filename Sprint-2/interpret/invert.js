@@ -6,6 +6,7 @@
 
 // E.g. invert({x : 10, y : 20}), target output: {"10": "x", "20": "y"}
 
+/*
 function invert(obj) {
   const invertedObj = {};
 
@@ -15,6 +16,7 @@ function invert(obj) {
 
   return invertedObj;
 }
+  */
 
 // a) What is the current return value when invert is called with { a : 1 }
 // The current return value is: { key: 1}      The literal string "key" is being set as a property, and it return that.
@@ -27,7 +29,7 @@ function invert(obj) {
 
 // c) What does Object.entries return? Why is it needed in this program?
 // Object.entries() method returns an array of key-value pairs from an object, like in the following case:
-Object.entries({ a: 1, b: 2 });
+// Object.entries({ a: 1, b: 2 });
 // Output: [["a", 1], ["b", 2]]
 // It is needed in this program because this will allow iteration over the key-value pairs of the object using a for...of loop
 
@@ -70,3 +72,13 @@ function invert(obj) {
 console.log(invert({ a: 1 }));               // Expected: { "1": "a" }
 console.log(invert({ a: 1, b: 2 }));         // Expected: { "1": "a", "2": "b" }
 console.log(invert({ x: 10, y: 20, z: 30 })); // Expected: { "10": "x", "20": "y", "30": "z" }
+
+
+//OUTPUT AS EXPECTED: 
+/*
+
+{ '1': 'a' }
+{ '1': 'a', '2': 'b' }
+{ '10': 'x', '20': 'y', '30': 'z' }
+
+*/
