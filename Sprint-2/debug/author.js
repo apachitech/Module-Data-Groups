@@ -48,8 +48,8 @@ for (const value of Object.values(author)) {
 }
 
 // When I run the code, I get as output :   
-Zadie
-Smith
-writer
-40
-true
+// Zadie
+// Smith
+// writer
+// 40
+// true
