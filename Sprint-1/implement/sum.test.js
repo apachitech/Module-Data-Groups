@@ -63,4 +63,11 @@ describe("sum", () => {
   test("given an array with only non-number values, returns 0", () => {
     expect(sum(["hello", null, {}, "world"])).toBe(0); // No numeric values
   });
+
+  test("given an array with decimal/float numbers, returns the correct total sum", () => {
+    const result = sum([1.1, 1.1, 1.1]); 
+    const expected = 3.3;
+    const epsilon = 0.00001; // Tolerance for floating-point comparison
+    expect(Math.abs(result - expected)).toBeLessThan(epsilon);
+  });
 });
