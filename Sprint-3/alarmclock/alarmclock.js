@@ -14,9 +14,14 @@
 // _______________________________________________________SOLUTION____________________________________________________
 
 
-let timeRemaining = 0;
+let activeIntervalId = null;
 
 function setAlarm() {
+  
+  // This condition clear any existing interval
+  if (activeIntervalId) {
+    clearInterval(activeIntervalId);
+  }
   // Declaration of timeInput allow us to access and retrieve the number of seconds entered in input box.
   const timeInput = document.getElementById("alarmSet").value; 
   // 
@@ -40,13 +45,13 @@ function setAlarm() {
   timeRemaining.textContent = `Time Remaining: ${formatTime(timeLeft)}`;
 
   // Timer countdown logic
-  const intervalId = setInterval(() => {
+  activeIntervalId = setInterval(() => {
     timeLeft -= 1;
     timeRemaining.textContent = `Time Remaining: ${formatTime(timeLeft)}`;
 
     // When timer hits 00:00, the countdown stops, the alarm plays, and the background color changes to red
     if (timeLeft <= 0) {
-      clearInterval(intervalId);
+      clearInterval(activeIntervalId);
       timeRemaining.textContent = `Time Remaining: 00:00`;
       playAlarm();
       document.body.style.backgroundColor = "red"; // Change background color when alarm plays
@@ -55,7 +60,9 @@ function setAlarm() {
 
   // To stop the alarm and reset, when the stop alarm button is clicked. and the background also is reset to it's default color
   document.getElementById("stop").addEventListener("click", () => {
-    clearInterval(intervalId);
+    if (activeIntervalId) {
+      clearInterval(activeIntervalId);
+    }
     pauseAlarm();
     document.body.style.backgroundColor = ""; // Reset background color
   });
